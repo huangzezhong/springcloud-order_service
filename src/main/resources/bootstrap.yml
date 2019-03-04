@@ -1,0 +1,65 @@
+#server:
+#  port: 8781
+
+#指定注册中心地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+#服务的名称
+spring:
+  application:
+    name: order-service
+  cloud:
+    #配置中心
+    config:
+      discovery:
+        service-id: CONFIG-SERVER
+        enabled: true
+      #环境名称，开发、测试、生产
+      profile: test
+      #建议用lable去区分环境，默认是lable是master分支
+      label: master
+#  redis:
+#    database: 0
+#    host: 127.0.0.1
+#    port: 6379
+#    timeout: 2000
+#  #链路追踪
+#  zipkin:
+#    base-url: http://192.168.107.30:9411/
+#  sleuth:
+#    sampler:
+#      probability: 1
+#
+##自定义负载均衡策略
+#product-service:
+# ribbon:
+#   NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+#
+##配置feign超时时间
+#feign:
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 4000
+#        readTimeout: 4000
+#  hystrix:
+#    enabled: true
+#
+##配置hystrix超时时间
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 4000
+#
+##仪表盘
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
